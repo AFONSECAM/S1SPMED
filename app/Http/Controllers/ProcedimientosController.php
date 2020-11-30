@@ -20,7 +20,7 @@ class ProcedimientosController extends Controller
     }
 
     public function listar(){        
-        if(Auth::user()->cargo=='Administrador') //se valida el tipo de usuario
+        if(Auth::user()->rol->nomRol=='Administrador') //se valida el tipo de usuario
             $procedimientos = Procedimientos::all();
         else{
             $procedimientos = Procedimientos::all()->where('estado',1);    
@@ -29,8 +29,8 @@ class ProcedimientosController extends Controller
         ->editColumn("estado", function($procedimiento){
             return $procedimiento->estado == 1 ? "<span class='badge badge-success'> Activo" : "<span class='badge badge-danger'>Inactivo";
         }) 
-        ->editColumn("valProc", function($procedimiento){
-            return '$'. number_format($procedimiento->valProc, 0);
+        ->editColumn("valor", function($procedimiento){
+            return '$'. number_format($procedimiento->valor, 0);
         }) 
         ->addColumn('editar', function($procedimiento){
             if($procedimiento->estado == 1){

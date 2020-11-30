@@ -41,8 +41,7 @@
                 <thead>                                                          
                     <th>@lang('Nombre')</th>
                     <th>@lang('Dirección')</th>
-                    <th>@lang('Teléfono')</th>
-                    <th>@lang('Estado')</th>
+                    <th>@lang('Teléfono')</th>                    
                     <th>@lang('Accion')</th>                                           
                 </thead>
                 <tbody>                    
@@ -71,10 +70,6 @@
                 {
                     data: 'telSede', 
                     name: 'telSede'
-                },
-                {
-                    data: 'estado', 
-                    name: 'estado'
                 },
                 {
                     data: 'editar', 

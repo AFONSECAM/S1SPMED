@@ -84,19 +84,25 @@
             </div> 
             <hr>
             {{-- IDENFICACIÖN --}}   
-            <form action="/consulta/guardar" method="POST">
+            <form action="/consulta/guardar" method="POST">                
             @csrf    
+            <input type="text" name="citaId" id="" value="{{$citas->id}}" hidden>
+            <input type="text" name="pacienteId" id="" value="{{$citas->paciente->id}}" hidden>
+            <input type="text" name="acompananteId" id="" value="{{$citas->acompanante->id}}" hidden>
+            <input type="text" name="empleadoId" id="" value="{{$citas->empleado->id}}" hidden>
+            
+            
             <div class="row" id="identificacion">
                 <div class="col-6">                
                     <div class="form-group">
-                        <label for="txtFecha">Fecha</label>
-                        <input type="date" class="form-control" id="txtFecha" name="txtFecha" value="{{$citas->fecha->format('Y-m-d')}}">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" value="{{$citas->fecha->format('Y-m-d')}}">
                     </div>                
                 </div>
                 <div class="col-6">                
                     <div class="form-group">
-                        <label for="txtHora">Hora</label>
-                        <input type="time" class="form-control" id="txtHora" name="txtHora" aria-describedby="emailHelp" value="{{$citas->hora_inicio->toTimeString()}}">
+                        <label for="hora">Hora</label>
+                        <input type="time" class="form-control" id="hora" name="hora"value="{{$citas->hora_inicio->toTimeString()}}">
                     </div>                
                 </div>
                 <div class="col-3">                
@@ -143,14 +149,14 @@
             <div class="row d-none" id="anamnesis">
                 <div class="col-6">                
                     <div class="form-group">
-                        <label for="txtMotivo">Motivo de la consulta</label>
-                        <textarea name="txtMotivo" class="form-control" id="txtMotivo" cols="30" rows="3"></textarea>                        
+                        <label for="motivo">Motivo de la consulta</label>
+                        <textarea name="motivo" class="form-control" id="motivo" cols="30" rows="3"></textarea>                        
                     </div>                
                 </div>
                 <div class="col-6">                
                     <div class="form-group">
-                        <label for="txtEnfAct">Enfermedad actual</label>
-                        <textarea name="txtEnfAct" class="form-control" id="txtEnfAct" cols="30" rows="3"></textarea>                        
+                        <label for="enfActual">Enfermedad actual</label>
+                        <textarea name="enfActual" class="form-control" id="enfActual" cols="30" rows="3"></textarea>                        
                     </div>                
                 </div>
                 <div class="col-12">
@@ -158,60 +164,60 @@
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label for="patologicos">Patologicos</label>
+                        <label for="pato">Patologicos</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="patologicos" value="Si">Si
+                                <input type="radio" class="form-check-input" name="pato" value="si"> Si
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="patologicos" value="No">No
+                                <input type="radio" class="form-check-input" name="pato" value="no"> No
                             </label>
                         </div>                                  
                     </div>   
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label for="alergicos">Alergicos</label>
+                        <label for="alergi">Alergicos</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="alergicos" id="alergicosSi" value="Si">Si
+                                <input type="radio" class="form-check-input" name="alergi" id="alergicosSi" value="si"> Si
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="alergicos" id="alergicosNo" value="No">No
+                                <input type="radio" class="form-check-input" name="alergi" id="alergicosNo" value="no"> No
                             </label>
                         </div>                                     
                     </div>   
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label for="quirurgicos">Quirurgicos</label>
+                        <label for="quirur">Quirurgicos</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="quirurgicos" id="quirurgicosSi" value="Si">Si
+                                <input type="radio" class="form-check-input" name="quirur" id="quirurSi" value="si"> Si
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="quirurgicos" id="quirurgicosNo" value="No">No
+                                <input type="radio" class="form-check-input" name="quirur" id="quirurNo" value="no"> No
                             </label>
                         </div>                                     
                     </div>   
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label for="farmacologicos">Farmacologicos</label>
+                        <label for="farma">Farmacologicos</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="farmacologicos" id="farmacologicosSi" value="Si">Si
+                                <input type="radio" class="form-check-input" name="farma" id="farmasSi" value="si"> Si
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="farmacologicos" id="farmacologicosNo" value="No">No
+                                <input type="radio" class="form-check-input" name="farma" id="farmaNo" value="no"> No
                             </label>
                         </div>                                      
                     </div>   
@@ -221,12 +227,12 @@
                         <label for="traumaticos">Traumaticos</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="traumaticos" id="traumaticosSi" value="Si">Si
+                                <input type="radio" class="form-check-input" name="trauma" id="traumaSi" value="si"> Si
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="traumaticos" id="traumaticosNo" value="No">No
+                                <input type="radio" class="form-check-input" name="trauma" id="traumaNo" value="no"> No
                             </label>
                         </div>                                     
                     </div>   
@@ -236,24 +242,69 @@
                         <label for="toxicologicos">Toxicologicos</label>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="toxicologicos" id="toxicologicosSi" value="Si">Si
+                                <input type="radio" class="form-check-input" name="toxi" id="toxiSi" value="si"> Si
                             </label>
                         </div>
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="toxicologicos" id="toxicologicosNo" value="No">No
+                                <input type="radio" class="form-check-input" name="toxi" id="toxiNo" value="no"> No
                             </label>
                         </div>                                     
                     </div>   
                 </div> 
+                <div class="col-2">
+                    <div class="form-group">
+                        <label for="gineco">Toxicologicos</label>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="gineco" id="ginecoSi" value="si"> Si
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="gineco" id="ginecoNo" value="no"> No
+                            </label>
+                        </div>                                     
+                    </div>   
+                </div> 
+                <div class="col-6">                
+                    <div class="form-group">
+                        <label for="anteFam">Antecedentes Familiares</label>
+                        <textarea name="anteFam" class="form-control" id="anteFam" cols="30" rows="3"></textarea>                        
+                    </div>                
+                </div>
                 <div class="col-12">
                     <a class="btn btn-primary float-left text-white" onclick="cambiaVisibilidad(1)">Anterior</a>
                     <a class="btn btn-primary float-right text-white" onclick="cambiaVisibilidad(3)">Siguiente</a>
                 </div>               
             </div>
 
-            <div class="row d-none" id="revisionsistemas">
-                <h2>Revisión sistemas</h2>
+            <div class="row d-none" id="revisionsistemas">                
+                <div class="col-6">                
+                    <div class="form-group">
+                        <label for="txtMotivo">Sistema</label>
+                        <select class="form-control" name="sistema" id="sistema">
+                            <option value="Sistema Nervioso">Sistema Nervioso</option>
+                            <option value="Sistema Endocrino">Sistema Endocrino</option>
+                            <option value="Sistema Circulatorio">Sistema Circulatorio</option>
+                            <option value="Sistema Digestivo">Sistema Digestivo</option>
+                            <option value="Sistema Respiratorio">Sistema Respiratorio</option>
+                            <option value="Sistema Respiratorio">Sistema Excretor</option>
+                            <option value="Sistema Reproductor">Sistema Reproductor</option>
+                            <option value="Sistema Muscular">Sistema Muscular</option>
+                            <option value="Sistema Esquelético">Sistema Esquelético</option>
+                            <option value="Sistema Inmunológico">Sistema Inmunológico</option>
+                            <option value="Sistema Linfático">Sistema Linfático</option>
+                            <option value="Sistema Integumentario">Sistema Integumentario</option>
+                        </select>                       
+                    </div>                
+                </div>
+                <div class="col-6">                
+                    <div class="form-group">
+                        <label for="obsSistema">Observación</label>
+                        <textarea name="obsSistema" class="form-control" id="obsSistema" cols="30" rows="3"></textarea>                        
+                    </div>                
+                </div>
                 <div class="col-12">
                     <a class="btn btn-primary float-left text-white" onclick="cambiaVisibilidad(2)">Anterior</a>
                     <a class="btn btn-primary float-right text-white" onclick="cambiaVisibilidad(4)">Siguiente</a>
@@ -274,94 +325,707 @@
                                 <td>FC</td>
                                 <td>FR</td>
                                 <td>SAT</td>
-                                <td>T°</td>
-                                <td>SAT2</td>
+                                <td>T°</td>                            
                             </tr>
                             <tr>
                                 <td>                                
-                                    <input type="text" class="form-control input-sm" name="TA">                                                                
+                                    <input type="text" class="form-control input-sm" name="ta">                                                                
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control input-sm" name="FC">
+                                    <input type="text" class="form-control input-sm" name="fc">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control input-sm" name="FR">
+                                    <input type="text" class="form-control input-sm" name="fr">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control input-sm" name="SAT">
+                                    <input type="text" class="form-control input-sm" name="sat">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control input-sm" name="T">
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control input-sm" name="SAT2">
-                                </td>
+                                    <input type="text" class="form-control input-sm" name="temp">
+                                </td>                           
                             </tr>
                         </tbody>
                     </table>
                 </div> 
 
-                <strong>Organos de los sentidos &nbsp;   </strong>
-                <div class="checkbox">
-                    <label><input type="checkbox" name="sinAlter" value="No">Sin alteraciones</label>
+                <div class="col-6">
+                    <strong>ORGANOS DE LOS SENTIDOS</strong>                    
+                </div>
+                <div class="col-6 float-right text-right">
+                    <input type="checkbox" name="sinAlteOrganos" id="sinAlteOrganos" value="si"> Sin alteraciones
                 </div>
                 <div class="col-12">
                     <table class="table table-bordered">
                         <tbody class="text-center">
                             <tr>
-                                <td>OJO</td> 
+                                <td>BOCA</td>
                                 <td>
-                                    <input type="radio" name="ojoD" id="ojoD" value="S">Der
-                                    <input type="radio" name="ojoI" id="ojoI" value="S">Izq
+                                    <input type="radio" name="boca" id="bocaD" value="D"> D
+                                    <input type="radio" name="boca" id="bocaI" value="I"> I
+                                    <input type="radio" name="boca" id="bocaN" value="N"> N
                                 </td>   
                                 <td>
-                                    <input type="text" class="form-control input-sm">
+                                    <input type="text" class="form-control input-sm" name="bocaObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>OJO</td> 
+                                <td>
+                                    <input type="radio" name="ojo" id="ojoD" value="D"> D
+                                    <input type="radio" name="ojo" id="ojoI" value="I"> I
+                                    <input type="radio" name="ojo" id="ojoN" value="N"> N
+                                </td>   
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="ojoObs">
                                 </td>                                        
                             </tr>
                             <tr>
                                 <td>OIDO</td>
                                 <td>
-                                    <input type="radio" name="oidoD" id="oidoD">Der
-                                    <input type="radio" name="oidoI" id="oidoI">Izq
+                                    <input type="radio" name="oido" id="oidoD" value="D"> D
+                                    <input type="radio" name="oido" id="oidoI" value="I"> I
+                                    <input type="radio" name="oido" id="oidoN" value="N"> N
                                 </td>   
                                 <td>
-                                    <input type="text" class="form-control input-sm">
+                                    <input type="text" class="form-control input-sm" name="oidoObs">
                                 </td> 
                             </tr>
                             <tr>
                                 <td>NARIZ</td>
                                 <td>
-                                    <input type="radio" name="narizD" id="narizD">Der
-                                    <input type="radio" name="narizI" id="narizI">Izq
+                                    <input type="radio" name="nariz" id="narizD" value="D"> D
+                                    <input type="radio" name="nariz" id="narizI" value="I"> I
+                                    <input type="radio" name="nariz" id="narizN" value="N"> N
                                 </td>   
                                 <td>
-                                    <input type="text" class="form-control input-sm">
+                                    <input type="text" class="form-control input-sm" name="narizObs">
+                                </td> 
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div> 
+
+
+                <div class="col-6">
+                    <strong>NEURO-PSIQUIATRICO</strong>                    
+                </div>
+                <div class="col-6 float-right text-right">
+                    <input type="checkbox" name="sinAlteNeuro" id="sinAlteNeuro" value="si"> Sin alteraciones
+                </div>
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="eutimico" id="eutimicoS" value="si"> S                                  
+                                    <input type="checkbox" name="eutimico" id="eutimicoN" value="no"> N                                 
+                                </td>
+                                <td>EUTIMICO</td>                                                                                                          
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="ansioso" id="ansiosoS" value="si"> S 
+                                    <input type="checkbox" name="ansioso" id="ansiosoN" value="no"> N                                  
+                                </td>
+                                <td>ANSIOSO</td>                                                                  
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="depresivo" id="depresivoS" value="si"> S  
+                                    <input type="checkbox" name="depresivo" id="depresivoN" value="no"> N                                  
+                                </td>   
+                                <td>DEPRESIVO</td>                               
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="maniaco" id="maniacoS" value="si"> S 
+                                    <input type="checkbox" name="maniaco" id="maniacoN" value="no"> N                                 
+                                </td>   
+                                <td>MANIACO</td>                                 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="psicotico" id="psicoticoS" value="si"> S
+                                    <input type="checkbox" name="psicotico" id="psicoticoN" value="no"> N                                   
+                                </td>   
+                                <td>PSICOTICO</td>                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="rigidezNuca" id="rigidezNucaS" value="si"> S 
+                                    <input type="checkbox" name="rigidezNuca" id="rigidezNucaN" value="no"> N                                  
+                                </td>   
+                                <td>RIGIDEZ NUCA</td>                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="otro" id="otro" value="si"> S
+                                    <input type="checkbox" name="otro" id="otroN" value="no"> N                                   
+                                </td>   
+                                <td>OTRO</td>
+                                <td>
+                                    <input class="form-control" type="text" class="form-control" name="otroObs" id="otroObs">
+                                </td>
+                            </tr> 
+                            <tr>
+                                <td>
+                                    <input type="radio" name="hemiparesia" id="hemiparesiaD" value="D"> D
+                                    <input type="radio" name="hemiparesia" id="hemiparesiaI" value="I"> I
+                                    <input type="radio" name="hemiparesia" id="hemiparesiaN" value="N"> N
+                                </td>  
+                                <td>HEMIPARESIA</td>
+                            </tr>                                                            
+                            <tr>
+                                <td>
+                                    <input type="radio" name="hemiplejia" id="hemiplejiaD" value="D"> D
+                                    <input type="radio" name="hemiplejia" id="hemiplejiaI" value="I"> I
+                                    <input type="radio" name="hemiplejia" id="hemiplejiaN" value="N"> N
+                                </td>  
+                                <td>HEMIPLEJIA</td>
+                            </tr>                                                            
+                            <tr>
+                                <td>
+                                    <input type="radio" name="babinski" id="babinskiD" value="D"> D
+                                    <input type="radio" name="babinski" id="babinskiI" value="I"> I
+                                    <input type="radio" name="babinski" id="babinskiN" value="N"> N
+                                </td>  
+                                <td>BABINSKI</td>
+                            </tr>                                                            
+                            <tr>
+                                <td>
+                                    <input type="radio" name="lassegue" id="lassegueD" value="D"> D
+                                    <input type="radio" name="lassegue" id="lassegueI" value="I"> I
+                                    <input type="radio" name="lassegue" id="lassegueN" value="N"> N
+                                </td>  
+                                <td>LASSEGUE</td>
+                            </tr>                                                            
+                            <tr>
+                                <td>
+                                    <input type="radio" name="glassglow" id="glassglowD" value="D"> D
+                                    <input type="radio" name="glassglow" id="glassglowI" value="I"> I
+                                    <input type="radio" name="glassglow" id="glassglowN" value="N"> N
+                                </td>  
+                                <td>GLASSGOW</td>
+                                <td>
+                                    <input type="text" name="glass1" id="glass1">/
+                                    <input type="text" name="glass2" id="glass2">
+                                </td>
+                            </tr>                                                            
+                            <tr>
+                                <td>
+                                    <input type="radio" name="pupilas" id="pupilasD" value="D"> D
+                                    <input type="radio" name="pupilas" id="pupilasI" value="I"> I
+                                    <input type="radio" name="pupilas" id="pupilasN" value="N"> N
+                                </td>  
+                                <td>PUPILAS</td>
+                                <td>
+                                    <input class="form-control" type="text" name="pupilasObs" id="pupilasObs">
+                                </td>
+                            </tr> 
+                            <tr>
+                                <td>
+                                    <input type="radio" name="rot" id="rotD" value="D"> D
+                                    <input type="radio" name="rot" id="rotI" value="I"> I
+                                    <input type="radio" name="rot" id="rotN" value="N"> N
+                                </td>  
+                                <td>ROT</td>
+                                <td>
+                                    <input class="form-control" type="text" name="rotObs" id="rotObs">
+                                </td>
+                            </tr>                                                            
+                            <tr>
+                                <td>FUERZA MUSCULAR</td>
+                                <td>
+                                    <input class="form-control" type="text" name="fzaMuscular" id="fzaMuscular">
+                                </td>  
+                            </tr>                                                            
+                            <tr>
+                                <td>
+                                    <input type="radio" name="fondoOjo" id="fondoOjoD" value="D"> D
+                                    <input type="radio" name="fondoOjo" id="fondoOjoI" value="I"> I
+                                    <input type="radio" name="fondoOjo" id="fondoOjoN" value="N"> N
+                                </td>  
+                                <td>FONDO DE OJO</td>
+                                <td>
+                                    <input type="text" name="fondoOjoObs" id="fondoOjoObs">
+                                </td>
+                            </tr>                                                            
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-6">
+                    <strong>RESPIRATORIO</strong>                    
+                </div>
+                <div class="col-6 float-right text-right">
+                    <input type="checkbox" name="sinAlteRespi" id="sinAlteRespi" value="si"> Sin alteraciones
+                </div>
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <input type="radio" name="crepitos" id="crepitosD" value="D"> D
+                                    <input type="radio" name="crepitos" id="crepitosI" value="I"> I
+                                    <input type="radio" name="crepitos" id="crepitosN" value="N"> N
+                                </td>
+                                <td>CREPITOS</td>                                    
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="crepitosObs">
+                                </td>                                        
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="estertores" id="estertoresD" value="D"> D
+                                    <input type="radio" name="estertores" id="estertoresI" value="I"> I
+                                    <input type="radio" name="estertores" id="estertoresN" value="N"> N
+                                </td>
+                                <td>ESTERTORES</td>                                   
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="estertoresObs">
                                 </td> 
                             </tr>
                             <tr>
-                                <td>BOCA</td>
                                 <td>
-                                    <input type="radio" name="bocaD" id="bocaD">Der
-                                    <input type="radio" name="bocaI" id="bocaI">Izq
+                                    <input type="radio" name="fremito" id="fremitoD" value="D"> D
+                                    <input type="radio" name="fremito" id="fremitoI" value="I"> I
+                                    <input type="radio" name="fremito" id="fremitoN" value="N"> N
                                 </td>   
+                                <td>FREMITO</td>
                                 <td>
-                                    <input type="text" class="form-control input-sm">
+                                    <input type="text" class="form-control input-sm" name="fremitoObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="percusion" id="percusionD" value="D"> D
+                                    <input type="radio" name="percusion" id="percusionI" value="I"> I
+                                    <input type="radio" name="percusion" id="percusionN" value="N"> N
+                                </td>   
+                                <td>PERCUSIÓN</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="percusionObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="roncus" id="roncusD" value="D"> D
+                                    <input type="radio" name="roncus" id="roncusI" value="I"> I
+                                    <input type="radio" name="roncus" id="roncusN" value="N"> N
+                                </td>   
+                                <td>RONCUS</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="roncusObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="sibilancias" id="sibilanciasD" value="D"> D
+                                    <input type="radio" name="sibilancias" id="sibilanciasI" value="I"> I
+                                    <input type="radio" name="sibilancias" id="sibilanciasN" value="N"> N
+                                </td>   
+                                <td>SIBILANCIAS</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="sibilanciasObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="radio" name="tirajes" id="tirajesD" value="D"> D
+                                    <input type="radio" name="tirajes" id="tirajesI" value="I"> I
+                                    <input type="radio" name="tirajes" id="tirajesN" value="N"> N
+                                </td>   
+                                <td>TIRAJES</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="tirajesObs">
                                 </td> 
                             </tr>
                         </tbody>
                     </table>
-                </div> 
+                </div>
+                
+                {{-- DATOS CARDIOVASCULAR --}}
+                <div class="col-6">
+                    <strong>CARDIOVASCULAR</strong>                    
+                </div>
+                <div class="col-6 float-right text-right">
+                    <input type="checkbox" name="sinAlteCardio" id="sinAlteCardio" value="si"> Sin alteraciones
+                </div>
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="arritmico" id="arritmico" value="si"> S                                   
+                                    <input type="checkbox" name="arritmico" id="arritmicoN" value="no"> N                                  
+                                </td>
+                                <td>ARRITMICO</td>                                    
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="arritmicoObs">
+                                </td>                                        
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="edemas" id="edemas" value="si"> S                                    
+                                    <input type="checkbox" name="edemas" id="edemasN" value="no"> N                                   
+                                </td>
+                                <td>EDEMAS</td>                                   
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="edemasObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="inurgi" id="inurgi" value="si"> S                                    
+                                    <input type="checkbox" name="inurgi" id="inurgiN" value="no"> N                                   
+                                </td>   
+                                <td>INURGITACIÓN YUGULAR</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="inurgiObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="pulsos" id="pulsos" value="si"> S                                  
+                                    <input type="checkbox" name="pulsos" id="pulsosN" value="no"> N                                 
+                                </td>   
+                                <td>PULSOS</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="pulsosObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="soplos" id="soplos" value="si"> S                                   
+                                    <input type="checkbox" name="soplos" id="soplosN" value="no"> N                                  
+                                </td>   
+                                <td>SOPLOS</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="soplosObs">
+                                </td> 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="otros" id="otros" value="si"> S                                   
+                                    <input type="checkbox" name="otros" id="otrosN" value="no"> N                                  
+                                </td>   
+                                <td>OTROS</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="otrosObs">
+                                </td> 
+                            </tr>                            
+                        </tbody>
+                    </table>
+                </div>
+
+
+                {{-- DATOS ABDOMEN --}}
+                <div class="col-6">
+                    <strong>ABDOMEN</strong>                    
+                </div>
+                <div class="col-6 float-right text-right">
+                    <input type="checkbox" name="sinAlteAbdo" id="sinAlteAbdo" value="si"> Sin alteraciones
+                </div>
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="ascitis" id="ascitis" value="si"> S                                   
+                                    <input type="checkbox" name="ascitis" id="ascitisN" value="no"> N                                  
+                                </td>
+                                <td>ASCITIS</td>                                                                                                          
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="blumberg" id="blumberg" value="si"> S                                    
+                                    <input type="checkbox" name="blumberg" id="blumbergN" value="no"> N                                   
+                                </td>
+                                <td>BLUMBERG</td>                                                                  
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="distenido" id="distenido" value="si"> S                                    
+                                    <input type="checkbox" name="distenido" id="distenidoN" value="no"> N                                   
+                                </td>   
+                                <td>DISTENIDO</td>                               
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="dolor" id="dolor" value="si"> S                                  
+                                    <input type="checkbox" name="dolor" id="dolorN" value="no"> N                                  
+                                </td>   
+                                <td>DOLOR</td>                                 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="espleno" id="espleno" value="si"> S                                   
+                                    <input type="checkbox" name="espleno" id="esplenoN" value="no"> N                                  
+                                </td>   
+                                <td>ESPLENOMEGALIA</td>                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="hepato" id="hepato" value="si"> S                                   
+                                    <input type="checkbox" name="hepato" id="hepatoN" value="no"> N                                  
+                                </td>   
+                                <td>HEPATOMEGALIA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="hernia" id="hernia" value="si"> S                                   
+                                    <input type="checkbox" name="hernia" id="herniaN" value="no"> N                                  
+                                </td>   
+                                <td>HERNIA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="masa" id="masa" value="si"> S                                   
+                                    <input type="checkbox" name="masa" id="masaN" value="no"> N                                   
+                                </td>   
+                                <td>MASA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="perista" id="perista" value="si"> S                                   
+                                    <input type="checkbox" name="perista" id="peristaN" value="no"> N                                  
+                                </td>   
+                                <td>PERISTALTISMO</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="rovsing" id="rovsing" value="si"> S                                   
+                                    <input type="checkbox" name="rovsing" id="rovsingN" value="no"> N                                  
+                                </td>   
+                                <td>ROVSING</td>
+                            </tr>                            
+                            <tr>                                
+                                <td>DESCRIPCIÓN</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="descAbdo">
+                                </td> 
+                            </tr>                            
+                        </tbody>
+                    </table>
+                </div>
+
+                {{-- DATOS PIEL --}}
+                <div class="col-6">
+                    <strong>PIEL</strong>                    
+                </div>
+                <div class="col-6 float-right text-right">
+                    <input type="checkbox" name="sinAltePiel" id="sinAltePiel" value="si"> Sin alteraciones
+                </div>
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <tbody class="text-center">
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="alopecia" id="alopecia" value="si"> S                                   
+                                    <input type="checkbox" name="alopecia" id="alopeciaN" value="no"> N                                  
+                                </td>
+                                <td>ALOPECIA</td>                                                                                                          
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="ampolla" id="ampolla" value="si"> S                                    
+                                    <input type="checkbox" name="ampolla" id="ampollaN" value="no"> N                                   
+                                </td>
+                                <td>AMPOLLA</td>                                                                  
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="atrofia" id="atrofia" value="si"> S                                    
+                                    <input type="checkbox" name="atrofia" id="atrofiaN" value="no"> N                                   
+                                </td>   
+                                <td>ATROFIA</td>                               
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="costra" id="costra" value="si"> S                                  
+                                    <input type="checkbox" name="costra" id="costraN" value="no"> N                                 
+                                </td>   
+                                <td>COSTRA</td>                                 
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="despig" id="despig" value="si"> S                                   
+                                    <input type="checkbox" name="despig" id="despigN" value="no"> N                                  
+                                </td>   
+                                <td>DESPIGMENTACION</td>                                
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="escama" id="escama" value="si"> S                                   
+                                    <input type="checkbox" name="escama" id="escamaN" value="no"> N                                  
+                                </td>   
+                                <td>ESCAMA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="esclerosis" id="esclerosis" value="si"> S                                   
+                                    <input type="checkbox" name="esclerosis" id="esclerosisN" value="no"> N                                  
+                                </td>   
+                                <td>ESCLEROSIS</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="escoriacion" id="escoriacion" value="si"> S                                   
+                                    <input type="checkbox" name="escoriacion" id="escoriacionN" value="no"> N                                  
+                                </td>   
+                                <td>ESCORIACION</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="fisura" id="fisura" value="si"> S                                   
+                                    <input type="checkbox" name="fisura" id="fisuraN" value="no"> N                                  
+                                </td>   
+                                <td>FISURA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="habon" id="habon" value="si"> S                                   
+                                    <input type="checkbox" name="habon" id="habonN" value="no"> N                                   
+                                </td>   
+                                <td>HABON</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="liquen" id="liquen" value="si"> S                                   
+                                    <input type="checkbox" name="liquen" id="liquenN" value="no"> N                                  
+                                </td>   
+                                <td>LIQUENIFICACION</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="macula" id="macula" value="si"> S                                   
+                                    <input type="checkbox" name="macula" id="maculaN" value="no"> N                                  
+                                </td>   
+                                <td>MACULA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="nodulo" id="nodulo" value="si"> S                                   
+                                    <input type="checkbox" name="nodulo" id="noduloN" value="no"> N                                  
+                                </td>   
+                                <td>NODULO</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="papula" id="papula" value="si"> S                                   
+                                    <input type="checkbox" name="papula" id="papulaN" value="no"> N                                  
+                                </td>   
+                                <td>PAPULA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="placa" id="placa" value="si"> S                                   
+                                    <input type="checkbox" name="placa" id="placaN" value="no"> N                                  
+                                </td>   
+                                <td>PLACA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="pustula" id="pustula" value="si"> S                                   
+                                    <input type="checkbox" name="pustula" id="pustulaN" value="no"> N                                  
+                                </td>   
+                                <td>PUSTULA</td>
+                            </tr>                                                                                
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="querato" id="querato" value="si"> S                                   
+                                    <input type="checkbox" name="querato" id="queratoN" value="no"> N                                   
+                                </td>   
+                                <td>QUERATOSIS</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="quiste" id="quiste" value="si"> S                                   
+                                    <input type="checkbox" name="quiste" id="quisteN" value="no"> N                                  
+                                </td>   
+                                <td>QUISTE</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="tumor" id="tumor" value="si"> S                                   
+                                    <input type="checkbox" name="tumor" id="tumorN" value="no"> N                                  
+                                </td>   
+                                <td>TUMOR</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="ulcera" id="ulcera" value="si"> S                                   
+                                    <input type="checkbox" name="ulcera" id="ulceraN" value="no"> N                                  
+                                </td>   
+                                <td>ULCERA</td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="vesicula" id="vesicula" value="si"> S                                   
+                                    <input type="checkbox" name="vesicula" id="vesiculaN" value="no"> N                                  
+                                </td>   
+                                <td>VESICULA</td>
+                            </tr>                            
+                            <tr>
+                                <td>DESCRIPCION</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="descPiel">
+                                </td> 
+                            </tr>                            
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-12">
+                    <strong>OSTEO-MUSCULAR</strong>                    
+                </div>
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <tbody class="text-center">                         
+                            <tr>
+                                <td>DESCRIPCION</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="descOsteo">
+                                </td> 
+                            </tr>                            
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="col-6">
+                    <strong>GENITOURINARIO Y OBSTETRICO:</strong>                    
+                </div>
+                <div class="col-6 float-right text-right">
+                    <input type="checkbox" name="sinAlte" value="si"> Sin alteraciones
+                </div>
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <tbody class="text-center">                         
+                            <tr>
+                                <td>DESCRIPCION</td>
+                                <td>
+                                    <input type="text" class="form-control input-sm" name="descGenito">
+                                </td> 
+                            </tr>                            
+                        </tbody>
+                    </table>
+                </div>
                 <div class="col-12">
                     <a class="btn btn-primary float-left text-white" onclick="cambiaVisibilidad(3)">Anterior</a>
                     <a class="btn btn-primary float-right text-white" onclick="cambiaVisibilidad(5)">Siguiente</a>
                 </div>                  
             </div>
 
+
             <div class="row d-none" id="resultados">
                 <strong>Resultados de paraclinicos.</strong>
                 <div class="col-12">                
                     <div class="form-group">                        
-                        <textarea name="motivo" id="motivo" class="form-control" id="" cols="30" rows="3"></textarea>                        
+                        <textarea name="descResult" id="descResult" class="form-control" id="" cols="30" rows="3"></textarea>                        
                     </div>                
                 </div>
                 <div class="col-12">
@@ -404,8 +1068,8 @@
             <div class="row d-none" id="plan">
                 <div class="col-6">                
                     <div class="form-group">
-                        <label for="plan">Plan o tratamiento</label>
-                        <textarea name="plan" class="form-control" id="plan" cols="30" rows="3"></textarea>                        
+                        <label for="descPlan">Plan o tratamiento</label>
+                        <textarea name="descPlan" class="form-control" id="descPlan" cols="30" rows="3"></textarea>                        
                     </div>                
                 </div>
                 <div class="col-12">
@@ -424,27 +1088,36 @@
                         </thead>
                         <tbody class="text-center">
                             <tr>
-                                <td>Nombre</td>
-                                <td>Presentacion</td>
+                                <td>Nombre</td>                                
                                 <td>Dosis</td>
                                 <td>Via administra</td>
                                 <td>Tiempo Tto</td>                                
                             </tr>
                             <tr>
-                                <td>                                
-                                    <input type="text" name="medNom" class="form-control input-sm">                                                                
+                                <td> 
+                                    
+                                    <div class="form-group">                                            
+                                            <select name="insumosId" class="form-control @error('insumosId') is-invalid @enderror" id="insumosId">
+                                                <option value="">@lang('--Seleccione una opción--')</option>     
+                                                @foreach ($insumos as $insumo)
+                                                    <option value="{{$insumo->id}}">{{$insumo->nomIns}}</option>
+                                                @endforeach                                                                                                                
+                                            </select>
+                                            @error('insumosId')
+                                                <div class="invalid-feedback">
+                                                    <strong>{{ $message }}</strong>
+                                                </div>
+                                            @enderror                                                       
+                                        </div>                                                                                                                                                                  
+                                </td>                                
+                                <td>
+                                    <input type="text" name="dosis" class="form-control input-sm">
                                 </td>
                                 <td>
-                                    <input type="text" name="medPres" class="form-control input-sm">
+                                    <input type="text" name="viaAdmin" class="form-control input-sm">
                                 </td>
                                 <td>
-                                    <input type="text" name="medDos" class="form-control input-sm">
-                                </td>
-                                <td>
-                                    <input type="text" name="medVia" class="form-control input-sm">
-                                </td>
-                                <td>
-                                    <input type="text" name="medTiempo" class="form-control input-sm">
+                                    <input type="text" name="tiempoTra" class="form-control input-sm">
                                 </td>                                
                             </tr>
                         </tbody>
@@ -453,8 +1126,10 @@
                 <div class="col-12">
                     <a class="btn btn-primary float-left text-white" onclick="cambiaVisibilidad(7)">Anterior</a>
                     <a class="btn btn-primary float-right text-white" onclick="cambiaVisibilidad(9)">Siguiente</a>
+                    <button type="submit" class="btn btn-success float-right">Guardar consulta</button>
                 </div>  
             </div>
+
             <div class="row d-none" id="responsable">                
                 <div class="col-6">                
                     <div class="form-group">
@@ -467,6 +1142,7 @@
                     <button type="submit" class="btn btn-success float-right">Guardar consulta</button>                    
                 </div>  
             </div>
+
             </form>
         </div>
     </div>    
@@ -679,31 +1355,208 @@
             default:
                 alert("hay un problema: No existe el producto.")
         }    
-   }
+   }   
+
     $('#tblCita').DataTable({
     autoWidth: false,
     processing: true,
     serverSide: true,
     responsive: true,
     ajax: '/inventario/insumos/listar',
-    columns: [        
-        {data: 'codIns', name: 'codIns'},
-        {data: 'nomIns', name: 'nomIns'},
-        {data: 'labora', name: 'labora'},
-        {data: 'concen', name: 'concen'},
-        {data: 'pres', name: 'pres'},
-        {data: 'unid', name: 'unid'},
-        {data: 'precio', name: 'precio'},
-        {data: 'fecVen', name: 'fecVen'},
-        {data: 'nomCate', name: 'nomCate'},
-        {
-            data: 'editar', 
-            name: 'editar', 
-            orderable: false, 
-            searchable: false
+        columns: [        
+            {data: 'codIns', name: 'codIns'},
+            {data: 'nomIns', name: 'nomIns'},
+            {data: 'labora', name: 'labora'},
+            {data: 'concen', name: 'concen'},
+            {data: 'pres', name: 'pres'},
+            {data: 'unid', name: 'unid'},
+            {data: 'precio', name: 'precio'},
+            {data: 'fecVen', name: 'fecVen'},
+            {data: 'nomCate', name: 'nomCate'},
+            {
+                data: 'editar', 
+                name: 'editar', 
+                orderable: false, 
+                searchable: false
+            }
+        ]    
+    });
+
+     
+    $("#sinAlteOrganos").on('change', function() {
+        if( $(this).is(':checked') ) {
+            $("#bocaN").prop("checked", true);
+            $("#narizN").prop("checked", true);
+            $("#oidoN").prop("checked", true);
+            $("#ojoN").prop("checked", true);
+            // Hacer algo si el checkbox ha sido seleccionado        
+        } else {
+            // Hacer algo si el checkbox ha sido deseleccionado
+            $("#bocaN").prop("checked", false);
+            $("#narizN").prop("checked", false);
+            $("#oidoN").prop("checked", false);
+            $("#ojoN").prop("checked", false);
         }
-    ]    
-});
+    });
+
+    $("#sinAlteNeuro").on('change', function() {
+        if( $(this).is(':checked') ) {
+            $("#eutimicoN").prop("checked", true);
+            $("#ansiosoN").prop("checked", true);
+            $("#depresivoN").prop("checked", true);
+            $("#maniacoN").prop("checked", true);
+            $("#psicoticoN").prop("checked", true);
+            $("#rigidezNucaN").prop("checked", true);
+            $("#otroN").prop("checked", true);
+            $("#hemiparesiaN").prop("checked", true);
+            $("#hemiplejiaN").prop("checked", true);
+            $("#babinskiN").prop("checked", true);
+            $("#lassegueN").prop("checked", true);
+            $("#glassglowN").prop("checked", true);
+            $("#pupilasN").prop("checked", true);
+            $("#rotN").prop("checked", true);
+            $("#fondoOjoN").prop("checked", true);            
+            // Hacer algo si el checkbox ha sido seleccionado        
+        }else {
+            // Hacer algo si el checkbox ha sido deseleccionado
+            $("#eutimicoN").prop("checked", false);
+            $("#ansiosoN").prop("checked", false);
+            $("#depresivoN").prop("checked", false);
+            $("#maniacoN").prop("checked", false);
+            $("#psicoticoN").prop("checked", false);
+            $("#rigidezNucaN").prop("checked", false);
+            $("#otroN").prop("checked", false);
+            $("#hemiparesiaN").prop("checked", false);
+            $("#hemiplejiaN").prop("checked", false);
+            $("#babinskiN").prop("checked", false);
+            $("#lessegueN").prop("checked", false);
+            $("#glassglowN").prop("checked", false);
+            $("#pupilasN").prop("checked", false);
+            $("#rotN").prop("checked", false);
+            $("#fondoOjoN").prop("checked", false);
+        }
+    }); 
+
+    $("#sinAlteRespi").on('change', function() {
+        if( $(this).is(':checked') ) {
+            $("#crepitosN").prop("checked", true);
+            $("#estertoresN").prop("checked", true);
+            $("#fremitoN").prop("checked", true);
+            $("#percusionN").prop("checked", true);
+            $("#roncusN").prop("checked", true);
+            $("#sibilanciasN").prop("checked", true);
+            $("#tirajesN").prop("checked", true);
+            // Hacer algo si el checkbox ha sido seleccionado        
+        }else {
+            // Hacer algo si el checkbox ha sido deseleccionado
+            $("#crepitosN").prop("checked", false);
+            $("#estertoresN").prop("checked", false);
+            $("#fremitoN").prop("checked", false);
+            $("#percusionN").prop("checked", false);
+            $("#roncusN").prop("checked", false);
+            $("#sibilanciasN").prop("checked", false);
+            $("#tirajesN").prop("checked", false);
+        }
+    });
+
+    $("#sinAlteCardio").on('change', function() {
+        if( $(this).is(':checked') ) {
+            $("#arritmicoN").prop("checked", true);
+            $("#edemasN").prop("checked", true);
+            $("#inurgiN").prop("checked", true);
+            $("#pulsosN").prop("checked", true);
+            $("#soplosN").prop("checked", true);
+            $("#otrosN").prop("checked", true);            
+            // Hacer algo si el checkbox ha sido seleccionado        
+        }else {
+            // Hacer algo si el checkbox ha sido deseleccionado
+            $("#arritmicoN").prop("checked", false);
+            $("#edemasN").prop("checked", false);
+            $("#inurgiN").prop("checked", false);
+            $("#pulsosN").prop("checked", false);
+            $("#soplosN").prop("checked", false);
+            $("#otrosN").prop("checked", false); 
+        }
+    });
+
+    $("#sinAlteAbdo").on('change', function() {
+        if( $(this).is(':checked') ) {
+            $("#ascitisN").prop("checked", true);
+            $("#blumbergN").prop("checked", true);
+            $("#distenidoN").prop("checked", true);
+            $("#dolorN").prop("checked", true);
+            $("#esplenoN").prop("checked", true);
+            $("#hepatoN").prop("checked", true);            
+            $("#herniaN").prop("checked", true);            
+            $("#masaN").prop("checked", true);            
+            $("#peristaN").prop("checked", true);            
+            $("#rovsingN").prop("checked", true);                                    
+            // Hacer algo si el checkbox ha sido seleccionado        
+        } else {
+            // Hacer algo si el checkbox ha sido deseleccionado
+            $("#ascitisN").prop("checked", false);
+            $("#blumbergN").prop("checked", false);
+            $("#distenidoN").prop("checked", false);
+            $("#dolorN").prop("checked", false);
+            $("#esplenoN").prop("checked", false);
+            $("#hepatoN").prop("checked", false);            
+            $("#herniaN").prop("checked", false);            
+            $("#masaN").prop("checked", false);            
+            $("#peristaN").prop("checked", false);            
+            $("#rovsingN").prop("checked", false); 
+        }
+    });
+
+    $("#sinAltePiel").on('change', function() {
+        if( $(this).is(':checked') ) {
+            $("#alopeciaN").prop("checked", true);
+            $("#ampollaN").prop("checked", true);
+            $("#atrofiaN").prop("checked", true);
+            $("#costraN").prop("checked", true);
+            $("#despigN").prop("checked", true);
+            $("#escamaN").prop("checked", true);            
+            $("#esclerosisN").prop("checked", true);            
+            $("#escoriacionN").prop("checked", true);            
+            $("#fisuraN").prop("checked", true);            
+            $("#habonN").prop("checked", true);            
+            $("#liquenN").prop("checked", true);                                    
+            $("#maculaN").prop("checked", true);                                    
+            $("#noduloN").prop("checked", true);                                    
+            $("#papulaN").prop("checked", true);                                    
+            $("#placaN").prop("checked", true);                                    
+            $("#pustulaN").prop("checked", true);                                    
+            $("#queratoN").prop("checked", true);                                    
+            $("#quisteN").prop("checked", true);                                    
+            $("#tumorN").prop("checked", true);                                    
+            $("#ulceraN").prop("checked", true);                                     
+            $("#vesiculaN").prop("checked", true);                                     
+            // Hacer algo si el checkbox ha sido seleccionado        
+        }else {
+            // Hacer algo si el checkbox ha sido deseleccionado
+            $("#alopeciaN").prop("checked", false);
+            $("#ampollaN").prop("checked", false);
+            $("#atrofiaN").prop("checked", false);
+            $("#costraN").prop("checked", false);
+            $("#despigN").prop("checked", false);
+            $("#escamaN").prop("checked", false);            
+            $("#esclerosisN").prop("checked", false);            
+            $("#escoriacionN").prop("checked", false);            
+            $("#fisuraN").prop("checked", false);
+            $("#habonN").prop("checked", false);              
+            $("#liquenN").prop("checked", false);                                    
+            $("#maculaN").prop("checked", false);                                    
+            $("#noduloN").prop("checked", false);                                    
+            $("#papulaN").prop("checked", false);                                    
+            $("#placaN").prop("checked", false);                                    
+            $("#pustulaN").prop("checked", false);                                    
+            $("#queratoN").prop("checked", false);                                    
+            $("#quisteN").prop("checked", false);                                    
+            $("#tumorN").prop("checked", false);                                    
+            $("#ulceraN").prop("checked", false);                                     
+            $("#vesiculaN").prop("checked", false); 
+        }
+    });
+    
 </script>
 
 @endsection

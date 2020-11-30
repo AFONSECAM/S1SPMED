@@ -79,7 +79,7 @@
                                     </div>
                                 </div>  
                             </div>                                                          
-                        @else                        
+                        @elseif ((Auth::user()->rol->nomRol) == "Administrador")                        
                             <hr>
                             {{-- ADMISTRADOR --}}                             
                             <div class="row">
@@ -213,7 +213,8 @@
                                     </div>
                                 </div>
                             </div> 
-                        
+                        @else
+                        <h1>Bienvenido, ingresó con perfil de Médico</h1>
                         @endif
                     @endif
                 </div>

@@ -80,7 +80,7 @@
                                     </div>
                                 </div>  
                             </div>                                                          
-                        <?php else: ?>                        
+                        <?php elseif((Auth::user()->rol->nomRol) == "Administrador"): ?>                        
                             <hr>
                                                          
                             <div class="row">
@@ -215,7 +215,8 @@
                                     </div>
                                 </div>
                             </div> 
-                        
+                        <?php else: ?>
+                        <h1>Bienvenido, ingresó con perfil de Médico</h1>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>

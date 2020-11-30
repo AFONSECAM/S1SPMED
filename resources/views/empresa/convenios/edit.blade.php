@@ -70,7 +70,7 @@
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
                         <label for="">@lang('Objeto')</label>
-                        <textarea name="objetoConv" class="form-control" cols="20" rows="5" placeholder="{{$convenio->objConv}}"></textarea>
+                        <textarea name="objetoConv" class="form-control" cols="20" rows="5">{{$convenio->objConv}}</textarea>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4">

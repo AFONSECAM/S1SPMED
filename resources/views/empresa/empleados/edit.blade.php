@@ -330,7 +330,7 @@
                             <select name="cargo" class="form-control @error('rol') is-invalid @enderror" name="cargo" id="cargo">
                                 @foreach ($cargos as $cargo)
                                     <option value="{{$cargo->nomCar}}" 
-                                        @if ($cargo->nomCar == $empleado->nomCar)    
+                                        @if ($cargo->nomCar == $empleado->cargo->nomCar)    
                                         selected>{{$cargo->nomCar}}</option>                                                                           
                                     @else
                                     >{{$cargo->nomCar}}</option>

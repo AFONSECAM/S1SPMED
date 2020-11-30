@@ -70,8 +70,8 @@
                 name: 'email'
             },            
             {
-                data: 'cargo', 
-                name: 'cargo'
+                data: 'rol_id', 
+                name: 'rol_id'
             },
             {
                 data: 'cambiar', 

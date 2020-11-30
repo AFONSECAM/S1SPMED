@@ -51,7 +51,7 @@ class EmpleadosController extends Controller
     public function store(Request $request){
         $input = $request->all();
         try {
-            Pacientes::create([
+            Empleados::create([
                 "ciuRes" => $input['ciudad'],                
                 "dirRes" => $input['direccion'],
                 "eCivil" => $input['estadoCivil'],
@@ -68,8 +68,9 @@ class EmpleadosController extends Controller
                 "telEmp" => $input['telefono'],
                 //"edad" => Carbon::createFromDate($input["fechaNac"])->age,                
                 "cargo_id" => $input["cargo"],                
+                "arl_id" => $input['arl'],
                 "eps_id" => $input['eps'],
-                "tipoId_id" => $input["tipoId"],                
+                "tiposId_id" => $input["tipoId"],                
                 "estado" => 1
             ]);
             Flash::success("Se ha registrado un nuevo empleado en la base de datos");

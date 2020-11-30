@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
             <?php echo $__env->make('flash::message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>            
-            <form action="/empleados/guardar" method="POST">
+            <form action="/empresa/empleados/guardar" method="POST">
                 <?php echo csrf_field(); ?>
                 <div class="row">
                     <div class="col-12">

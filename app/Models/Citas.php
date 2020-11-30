@@ -19,6 +19,7 @@ class Citas extends Model
         "acompanante_id",
         "empleado_id",
         "paciente_id",
+        "procedimiento_id",
         "sede_id"          
     ];
     protected $dates = ['fecha','hora_inicio','hora_final'];
@@ -37,7 +38,15 @@ class Citas extends Model
         return $this->belongsTo('App\Models\Pacientes');
     }
 
+    public function acompanante(){
+        return $this->belongsTo('App\Models\Acompanantes');
+    }
+
     public function sede(){
         return $this->belongsTo('App\Models\Sedes');
+    }
+    
+    public function procedimiento(){
+        return $this->belongsTo('App\Models\Procedimientos');
     }
 }

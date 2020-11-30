@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
             @include('flash::message')            
-            <form action="/empleados/guardar" method="POST">
+            <form action="/empresa/empleados/guardar" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-12">

@@ -11,9 +11,9 @@ use DataTables;
 use Flash;
 
 
-use App\Models\Usuarios;
+use App\Models\User;
 use App\Models\Empleados;
-use App\Models\Cargos;
+use App\Models\Roles;
 use App\Exports\UsuariosExport;
 
 
@@ -25,13 +25,16 @@ class UsuariosController extends Controller
 
     public function create(){
         $empleados = Empleados::all();
-        $cargos = Cargos::all();
-        return view("empresa.usuarios.create", compact("empleados", "cargos"));
+        $roles = Roles::all();
+        return view("empresa.usuarios.create", compact("empleados", "roles"));
     }
 
     public function listar(Request $request){
-        $usuarios = Usuarios::all();
+        $usuarios = User::all();
         return Datatables::of($usuarios)    
+        ->editColumn("rol_id", function($usuario){
+            return $usuario->rol->nomRol;
+        })
         ->addColumn('cambiar', function($usuario){
             if($usuario->estado == 1){
                 return '
@@ -52,7 +55,7 @@ class UsuariosController extends Controller
     public function store(Request $request){
         $input = $request->all();
         try {
-            Usuarios::create([
+            User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
@@ -68,7 +71,7 @@ class UsuariosController extends Controller
     }
 
     public function updateState($id, $estado){
-        $usuario = Usuarios::where('id', $id)->first();
+        $usuario = User::where('id', $id)->first();
         if($usuario == null){
             Flash::error("Ups! Se ha generado un error al cambiar el estado...");
             return redirect("/empresa/usuarios");
@@ -86,7 +89,7 @@ class UsuariosController extends Controller
 
     public function exportar(Request $request){ 
         $input = $request->all();       
-        $usuarios = Usuarios::all();               
+        $usuarios = User::all();               
         if(count($usuarios) > 0){            
             if(isset($input["pdf"])){
                 return $this->generar_pdf($usuarios);

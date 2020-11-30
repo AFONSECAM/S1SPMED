@@ -135,7 +135,7 @@
                                 <a href="/empresa/usuarios">Ver usuarios</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="/empresa/ususarios/crear">Crear usuario</a>
+                                <a href="/empresa/usuarios/crear">Crear usuario</a>
                             </li>
                         </ul>
                     </div>

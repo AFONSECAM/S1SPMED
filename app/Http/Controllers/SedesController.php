@@ -19,15 +19,15 @@ class SedesController extends Controller
     }
 
     public function listar(Request $request){
-        if(Auth::user()->cargo=='Administrador') //se valida el tipo de usuario
+        if(Auth::user()->rol->nomRol=='Administrador') //se valida el tipo de usuario
             $sedes = Sedes::all();
         else{
             $sedes = Sedes::all()->where('estado',1);    
         }     
         return Datatables::of($sedes)
-            ->editColumn("estado", function($sede){
+/*             ->editColumn("estado", function($sede){
                 return $sede->estado == 1 ? "<span class='badge badge-success'> Activo" : "<span class='badge badge-danger'>Inactivo";
-            })
+            }) */
             ->addColumn('editar', function ($sede) {
                 if($sede->estado == 1){
                     $estado = '<a href="/empresa/sedes/cambiarestado/'.$sede->id.'/0" class="btn btn-sm btn-danger" title="Inactivar"><i class="fa fa-trash"></i></a>';
@@ -36,7 +36,7 @@ class SedesController extends Controller
                 }
                 return '<a href="/empresa/sedes/editar/'.$sede->id.'" class="btn btn-sm btn-primary"><i class="fa fa-pen"></i></a>'.$estado;
             })
-            ->rawColumns(['estado', 'editar'])                        
+            ->rawColumns(['editar'])                        
             ->make(true);
     }
     

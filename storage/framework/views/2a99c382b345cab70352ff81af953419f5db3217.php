@@ -554,7 +554,7 @@ endif;
 unset($__errorArgs, $__bag); ?>" name="cargo" id="cargo">
                                 <?php $__currentLoopData = $cargos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cargo): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($cargo->nomCar); ?>" 
-                                        <?php if($cargo->nomCar == $empleado->nomCar): ?>    
+                                        <?php if($cargo->nomCar == $empleado->cargo->nomCar): ?>    
                                         selected><?php echo e($cargo->nomCar); ?></option>                                                                           
                                     <?php else: ?>
                                     ><?php echo e($cargo->nomCar); ?></option>

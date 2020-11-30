@@ -181,6 +181,7 @@ Route::middleware(['auth','validarRol'])->group(function(){
     Route::get('/consulta/listar', 'ConsultaController@listar');
     Route::get('/consulta/consulta/{id}', 'ConsultaController@inicioConsulta');
     Route::get('/consulta/consultaPaciente', 'ConsultaController@consulta');
+    Route::post('/consulta/guardar', 'ConsultaController@guardarConsulta');
 
 
     //Graficas

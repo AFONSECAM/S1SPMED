@@ -11,13 +11,12 @@ class Sedes extends Model
     public $fillable = [        
         "dirSede",
         "nomSede",        
-        "telSede",        
+        "telSede"        
     ];
 
     public static $rules = [
         'nomSede' => 'required',
         'dirSede' => 'required',
-        'telSede' => 'required',
-        'estado' => 'in:1,0',
+        'telSede' => 'required',        
     ];
 }

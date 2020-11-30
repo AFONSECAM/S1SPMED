@@ -112,7 +112,7 @@ unset($__errorArgs, $__bag); ?>
                 <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
                         <label for=""><?php echo app('translator')->get('Objeto'); ?></label>
-                        <textarea name="objetoConv" class="form-control" cols="20" rows="5" placeholder="<?php echo e($convenio->objConv); ?>"></textarea>
+                        <textarea name="objetoConv" class="form-control" cols="20" rows="5"><?php echo e($convenio->objConv); ?></textarea>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-4">

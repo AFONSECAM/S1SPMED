@@ -27,7 +27,7 @@ class CargosController extends Controller
             return "$" . number_format($cargo->salCar, 0);
         })
         ->addColumn("accion", function ($cargo) {
-            return '<a href="/empresa/cargos/editar/'.$cargo->id.'" class="btn btn-xs btn-primary"><i class="fas fa-pen"></i></a>';
+            return '<a href="/empresa/cargos/editar/'.$cargo->id.'" class="btn btn-sm btn-primary"><i class="fas fa-pen"></i></a>';
         })
         ->rawColumns(['accion', 'salario'])
         ->make(true);            

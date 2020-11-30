@@ -30,11 +30,7 @@
                         <i class="fa fa-bars fa-sm"> <?php echo app('translator')->get('Datos Personales'); ?></i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active">
-                        <i class="fas fa-calendar-alt fa-sm"> Historial Citas</i>
-                    </a>
-                </li>
+                
             </ul>
         </div>
     </div>
@@ -104,15 +100,25 @@
 
         <div class="col-md-auto">
             <dl class="text-left">
-                <dt><?php echo e($empleado->eps); ?></dt>
-                <dt><?php echo e($empleado->arl); ?></dt>
+                <dt><?php echo e($empleado->eps->nomEps); ?></dt>
+                <dt><?php echo e($empleado->arl->nomArl); ?></dt>
                 <dt><?php echo e($empleado->ciuRes); ?></dt>
                 <dt><?php echo e($empleado->dirRes); ?></dt>
                 <dt><?php echo e($empleado->telEmp); ?></dt>
                 <dt><?php echo e($empleado->mailEmp); ?></dt>
-                <dt><?php echo e($empleado->eCivil); ?></dt>                
+                <dt>
+                    <?php if($empleado->eCivil == "C"): ?>
+                    <dt>Casado</dt>
+                <?php elseif($empleado->eCivil == "S"): ?>
+                    <dt>Soltero</dt>
+                <?php elseif($empleado->eCivil == "U"): ?>
+                    <dt>Union libreUnión</dt>
+                <?php else: ?>
+                    <dt>Viudo</dt>
+                <?php endif; ?> 
+                </dt>                
                 <dt><?php echo e($empleado->fecIng); ?></dt>
-                <dt><?php echo e($empleado->cargo); ?></dt>
+                <dt><?php echo e($empleado->cargo->nomCar); ?></dt>
                 <dt><?php echo e($empleado->nomSede); ?></dt>
                 <?php if($empleado->estado == 1): ?>
                     <dt style="color: green;">

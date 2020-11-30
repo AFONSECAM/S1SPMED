@@ -28,7 +28,7 @@ class Empleados extends Model
         "arl_id",
         "cargo_id",
         "eps_id",
-        "tipoId_id",
+        "tiposId_id",
         "estado"                                
     ];
 

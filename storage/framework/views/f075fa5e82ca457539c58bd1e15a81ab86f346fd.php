@@ -71,12 +71,12 @@
                     name: 'nomProc'
                 },
                 {
-                    data: 'conProc',
-                    name: 'conProc'
+                    data: 'preProc',
+                    name: 'preProc'
                 },
                 {
-                    data: 'valProc',
-                    name: 'valProc'
+                    data: 'valor',
+                    name: 'valor'
                 },
                 {
                     data: 'estado',

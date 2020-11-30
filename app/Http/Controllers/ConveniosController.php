@@ -41,7 +41,7 @@ class ConveniosController extends Controller
         })
         ->addColumn('editar', function($convenio){
             if($convenio->estado == 1){
-               $estado = '<a href="/empresa/convenios/cambiarestado/'.$convenio->id.'/0" class="btn btn-sm btn-danger" title="Eliminar"><i class="fa fa-trash"></i></a>';
+               $estado = '<a href="/empresa/convenios/cambiarestado/'.$convenio->id.'/0" class="btn btn-sm btn-danger" title="Deshactivar"><i class="fa fa-trash"></i></a>';
             }else{
                 $estado = '<a href="/empresa/convenios/cambiarestado/'.$convenio->id.'/1" class="btn btn-sm btn-success" title="Habilitar"><i class="fas fa-check"></i></a>';
             }

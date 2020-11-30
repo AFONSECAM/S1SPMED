@@ -24,17 +24,17 @@
               @csrf
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Employeer') }}</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Empleado') }}</label>
                     <div class="col-md-6">               
-                        <select id="nIdEmp" class="form-control @error('nIdEmp') is-invalid @enderror" name="nIdEmp" required autocomplete="name" autofocus>
+                        <select id="empleado" class="form-control @error('name') is-invalid @enderror" name="empleado" required autocomplete="name" autofocus>
                             <option value="">Seleccione Empleado</option>    
                             @foreach ($empleados as $empleado)                                                        
-                                <option value="{{$empleado->nIdEmp}}">
+                                <option value="{{$empleado->id}}">
                                     {{$empleado->pNom}} {{$empleado->pApe}}
                                 </option>                                
                             @endforeach
                         </select>
-                      @error('nIdEmp')
+                      @error('name')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                           </span>
@@ -42,7 +42,7 @@
                     </div>
                 </div>              
                 <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                     <div class="col-md-6">
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" required autocomplete="email">
@@ -69,7 +69,7 @@
                 </div>                
 
                 <div class="form-group row">
-                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Password') }}</label>
 
                     <div class="col-md-6">
                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
@@ -77,15 +77,15 @@
                 </div>  
               
                 <div class="form-group row">
-                    <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Cargo') }}</label>
+                    <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>
                     <div class="col-md-6">
-                        <select name="cargo" class="form-control @error('cargo') is-invalid @enderror" name="cargo" id="cargo">
+                        <select name="rol" class="form-control @error('rol') is-invalid @enderror" name="rol" id="rol">
                             <option>Seleccione cargo</option>
-                            @foreach ($cargos as $cargo)
-                                <option value="{{$cargo->nomCar}}">{{$cargo->nomCar}}</option> 
+                            @foreach ($roles as $rol)
+                                <option value="{{$rol->id}}">{{$rol->nomRol}}</option> 
                             @endforeach                                                                                          
                         </select>
-                        @error('cargo')
+                        @error('rol')
                             <div class="invalid-feedback">
                                 <strong>{{ $message }}</strong>
                             </div>
@@ -112,7 +112,7 @@
 @section('scripts')
     <script>        
         $('#nIdEmp').change(function(){
-            var empleados = document.getElementById("nIdEmp");
+            var empleados = document.getElementById("empleado");
             document.getElementById("name").value = empleados.options[empleados.selectedIndex].text;                                                  
         });
     </script>

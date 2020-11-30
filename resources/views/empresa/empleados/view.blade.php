@@ -30,11 +30,11 @@
                         <i class="fa fa-bars fa-sm"> @lang('Datos Personales')</i>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link active">
                         <i class="fas fa-calendar-alt fa-sm"> Historial Citas</i>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
@@ -104,15 +104,25 @@
 
         <div class="col-md-auto">
             <dl class="text-left">
-                <dt>{{$empleado->eps}}</dt>
-                <dt>{{$empleado->arl}}</dt>
+                <dt>{{$empleado->eps->nomEps}}</dt>
+                <dt>{{$empleado->arl->nomArl}}</dt>
                 <dt>{{$empleado->ciuRes}}</dt>
                 <dt>{{$empleado->dirRes}}</dt>
                 <dt>{{$empleado->telEmp}}</dt>
                 <dt>{{$empleado->mailEmp}}</dt>
-                <dt>{{$empleado->eCivil}}</dt>                
+                <dt>
+                    @if ($empleado->eCivil == "C")
+                    <dt>Casado</dt>
+                @elseif($empleado->eCivil == "S")
+                    <dt>Soltero</dt>
+                @elseif($empleado->eCivil == "U")
+                    <dt>Union libreUnión</dt>
+                @else
+                    <dt>Viudo</dt>
+                @endif 
+                </dt>                
                 <dt>{{$empleado->fecIng}}</dt>
-                <dt>{{$empleado->cargo}}</dt>
+                <dt>{{$empleado->cargo->nomCar}}</dt>
                 <dt>{{$empleado->nomSede}}</dt>
                 @if ($empleado->estado == 1)
                     <dt style="color: green;">

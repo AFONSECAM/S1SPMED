@@ -76,6 +76,12 @@ class User extends Authenticatable
                     ["nombre"=>"Insumos", "url"=>"/inventario/insumos", "icono"=>"assets/dashboard/vendors/@coreui/icons/svg/free.svg#cil-library-add"],                
                 ]                    
             ]             
+        ],
+        
+        "Medico" => 
+        [
+            ["nombre"=>"Inicio", "url"=>"/home", "icono"=>"assets/dashboard/vendors/@coreui/icons/svg/free.svg#cil-speedometer"],                                        
+            ["nombre"=>"Consulta", "url"=>"/consulta","icono"=>"assets/dashboard/vendors/@coreui/icons/svg/free.svg#cil-clipboard"]             
         ]
     ];
 
@@ -221,6 +227,7 @@ class User extends Authenticatable
             ["url"=>"/consulta/listar", "method"=>"GET", "identica"=>true],
             ["url"=>"/consulta/consulta", "method"=>"GET", "identica"=>false],
             ["url"=>"/consulta/consultaPaciente", "method"=>"GET", "identica"=>true],
+            ["url"=>"/consulta/guardar", "method"=>"POST", "identica"=>true],
         
             //Graficar
             ["url"=>"/graficar/empleados", "method"=>"GET", "identica"=>true]                    
@@ -247,6 +254,17 @@ class User extends Authenticatable
             ["url"=>"/inventario/insumos/guardar", "method"=>"POST", "identica"=>true],
             ["url"=>"/inventario/insumos/editar/", "method"=>"GET", "identica"=>false],
             ["url"=>"/inventario/insumos/actualizar", "method"=>"POST", "identica"=>true]
+        ],
+
+        "Medico" =>
+        [
+            ["url" => "/home",    "method"=>"GET", "identica"=>true],            
+            //Consulta
+            ["url"=>"/consulta", "method"=>"GET", "identica"=>true],
+            ["url"=>"/consulta/listar", "method"=>"GET", "identica"=>true],
+            ["url"=>"/consulta/consulta", "method"=>"GET", "identica"=>false],
+            ["url"=>"/consulta/consultaPaciente", "method"=>"GET", "identica"=>true],
+            ["url"=>"/consulta/guardar", "method"=>"POST", "identica"=>true],
         ]
     ];
 }
